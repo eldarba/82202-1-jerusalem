@@ -1,6 +1,6 @@
 package ex06Loops;
 
-public class Tar2 {
+public class Tar2B {
 	/*
 	 * Create a class that defines two random values and prints all values between
 	 * them. note - which variable holds the higher value is not known.
@@ -12,15 +12,16 @@ public class Tar2 {
 
 		System.out.println("a = " + a + " and b = " + b);
 
+		int mekadem = 1;
 		if (a > b) {
-			int t = a;
-			a = b;
-			b = t;
+			mekadem = -1;
 		}
 
-		for (int i = a; i <= b; i++) {
+		for (int i = a; i != b; i += mekadem) {
 			System.out.print(i + ", ");
 		}
+
+		System.out.println(b);
 
 	}
 
