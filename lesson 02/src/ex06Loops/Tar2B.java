@@ -23,6 +23,10 @@ public class Tar2B {
 
 		System.out.println(b);
 
+		/*
+		 * Create a class that defines a random number and prints all even numbers from
+		 * 0 to that number
+		 */
 	}
 
 }
