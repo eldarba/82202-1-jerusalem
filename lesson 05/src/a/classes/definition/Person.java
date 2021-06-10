@@ -2,9 +2,21 @@ package a.classes.definition;
 
 public class Person {
 
-	int id;
-	String name;
-	private int age;
+	protected int id;
+	protected String name;
+	protected int age;
+
+//	// CTOR 1
+	public Person() {
+
+	}
+
+	// CTOR 2
+	public Person(int id, String name, int age) {
+		this.id = id;
+		this.name = name;
+		setAge(age);
+	}
 
 	/**
 	 * change the age of this person if the value is valid
@@ -27,13 +39,29 @@ public class Person {
 		return this.age;
 	}
 
-	void speak() {
+	public void speak() {
 		System.out.println(name + " says: bla bla");
 	}
 
-	void walk() {
+	public void walk() {
 		System.out.println(name + " is walking");
 
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

@@ -6,7 +6,7 @@ public class Program1 {
 
 		System.out.println("=== start");
 		Person p1 = new Person();
-		p1.name = "Dor";
+		p1.setName("Dor");
 		p1.speak();
 
 		// print the person's age
