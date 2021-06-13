@@ -1,18 +1,17 @@
 package c;
 
-public class FinalDemo {
+import a.Person;
+
+public class AppOverload {
 
 	public static void main(String[] args) {
 		int x = 5;
-		System.out.println(x);
+		boolean y = true;
+		Person p = new Person();
 
-		x = 100;
 		System.out.println(x);
-
-		final int y = 10;
 		System.out.println(y);
-
-//		y = 200;
+		System.out.println(p);
 
 	}
 

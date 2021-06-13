@@ -38,4 +38,9 @@ public class Car {
 		this.location.setY(y);
 	}
 
+	@Override
+	public String toString() {
+		return "Car [number=" + number + ", color=" + color + "]";
+	}
+
 }

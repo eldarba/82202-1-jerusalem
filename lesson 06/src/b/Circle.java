@@ -22,4 +22,10 @@ public class Circle extends Shape {
 		this.radius = radius;
 	}
 
+	@Override
+	public String toString() {
+
+		return "Circle[color=" + getColor() + ", radius=" + radius + ", area=" + getArea() + "]";
+	}
+
 }

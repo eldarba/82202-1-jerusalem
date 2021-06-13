@@ -9,7 +9,8 @@ public class Shape {
 		this.color = color;
 	}
 
-	public String getColor() {
+	// final method cannot be overridden
+	public final String getColor() {
 		return color;
 	}
 
@@ -17,7 +18,7 @@ public class Shape {
 		this.color = color;
 	}
 
-	public double getArea() {
+	protected double getArea() {
 		return -1;
 	}
 
