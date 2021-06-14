@@ -20,10 +20,17 @@ public class ZooApp {
 		for (Animal animal : animals) {
 			if (animal != null) {
 				animal.speak();
-				if (animal instanceof Flyer) {
-					// switch reference to call fly()
-					Flyer flyer = (Flyer) animal;
+				if (animal instanceof AdvancedFlyer) {
+					// switch reference to call other methods
+					AdvancedFlyer flyer = (AdvancedFlyer) animal;
+					flyer.takeOff();
 					flyer.fly();
+					flyer.navigate();
+					flyer.land();
+				} else if (animal instanceof Flyer) {
+					((Flyer) animal).fly();
+				} else if (animal instanceof Navigator) {
+					((Navigator) animal).navigate();
 				}
 			}
 
