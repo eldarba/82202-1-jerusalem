@@ -3,8 +3,13 @@ package c;
 public class Car {
 
 	private static int counter;
-	private int number;
+	private final int number; // final
 	private int speed;
+	public static final int MAX_SPEED = 120; // constant
+
+	static {// static initializer - runs on class load
+		System.out.println("Car class loaded");
+	}
 
 	{ // initializer - runs before CTOR
 		System.out.println(">>> initializer");
@@ -18,7 +23,7 @@ public class Car {
 
 	public Car(int speed) {
 		System.out.println(">>> CTOR");
-		this.speed = speed;
+		setSpeed(speed);
 	}
 
 	public static int getCounter() {
@@ -32,16 +37,14 @@ public class Car {
 		return this.number;
 	}
 
-	public void setNumber(int number) {
-		this.number = number;
-	}
-
 	public int getSpeed() {
 		return speed;
 	}
 
 	public void setSpeed(int speed) {
-		this.speed = speed;
+		if (speed <= MAX_SPEED) {
+			this.speed = speed;
+		}
 	}
 
 	@Override
