@@ -27,4 +27,10 @@ public class Bat extends Mammal implements AdvancedFlyer {
 		System.out.println("takeOff like a Bat");
 	}
 
+	// override the default implementation in the interface
+	@Override
+	public void glide() {
+		System.out.println("glide like a Bat");
+	}
+
 }
