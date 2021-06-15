@@ -1,6 +1,6 @@
 package a;
 
-public abstract class Shape {
+public abstract class Shape implements Printable {
 	// attribute
 	private String color; // instance variable
 	private final int id; // final instance variable
@@ -31,6 +31,13 @@ public abstract class Shape {
 
 	public int getId() {
 		return id;
+	}
+
+	@Override
+	public void print() {
+		System.out.println("==========================");
+		System.out.println("=== " + this + " ===");
+		System.out.println("==========================");
 	}
 
 }

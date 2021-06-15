@@ -32,6 +32,14 @@ public class Rectangle extends Shape {
 		this.width = width;
 	}
 
+	/**
+	 * @param side sets the length and width to the specified side value
+	 */
+	public void setSides(int side) {
+		setLength(side);
+		setWidth(side);
+	}
+
 	@Override
 	public String toString() {
 		return "Rectangle [length=" + length + ", width=" + width + ", color=" + getColor() + "]";
