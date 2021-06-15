@@ -6,22 +6,24 @@ public class StateApp {
 
 	public static void main(String[] args) {
 
-		State isr = new State();
-		isr.setName("Israel");
+		State isr = new State("Israel", 5555);
+		State fra = new State("France", 6666);
 
-		State fra = new State();
-		fra.setName("France");
+		Citizen c1 = isr.new Citizen("David");
+		Citizen c2 = isr.new Citizen("Liora");
+		Citizen c3 = isr.new Citizen("Miri");
+		Citizen c4 = fra.new Citizen("Pier");
+		Citizen c5 = fra.new Citizen("Jean");
 
-		Citizen c1 = isr.new Citizen();
-		c1.setName("David");
-		Citizen c2 = fra.new Citizen();
-		c2.setName("Pier");
+		Citizen[] citizens = { c1, c2, c3, c4, c5 };
 
-		System.out.println(c1.getName());
-		System.out.println(c1.getStateName());
+		for (Citizen c : citizens) {
+			System.out.println(c + " state: " + c.getStateName());
+		}
 
-		System.out.println(c2.getName());
-		System.out.println(c2.getStateName());
+		System.out.println("Israel population: " + isr.getPopulation());
+		System.out.println("France population: " + fra.getPopulation());
+		System.out.println("World population: " + State.getWorldPopulation());
 
 	}
 

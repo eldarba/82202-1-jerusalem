@@ -78,7 +78,6 @@ public class State {
 		public String toString() {
 			return "Citizen [id=" + id + ", name=" + name + "]";
 		}
-
 	}
 
 }
