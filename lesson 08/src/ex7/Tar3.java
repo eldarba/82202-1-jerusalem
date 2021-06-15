@@ -9,7 +9,6 @@ public class Tar3 {
 		for (int i = 0; i < arr.length; i++) {
 			arr[i] = (int) (Math.random() * 11);
 		}
-		arr[0] = 0;
 		System.out.println(Arrays.toString(arr));
 
 		int[] temp = new int[arr.length];
@@ -23,7 +22,7 @@ public class Tar3 {
 					continue outer;
 				}
 			}
-			// if we are here we shold copy an element
+			// if we are here we should copy an element
 			temp[length] = arr[i];
 			length++;
 		}
