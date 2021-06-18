@@ -4,9 +4,9 @@ public class Trainer extends Person {
 
 	private double monthlyIncome;
 
-	public Trainer(int id, String name, int age, Address address, double monthlyPayment) {
+	public Trainer(int id, String name, int age, Address address, double monthlyIncome) {
 		super(id, name, age, address);
-		this.monthlyIncome = monthlyPayment;
+		this.monthlyIncome = monthlyIncome;
 	}
 
 	public double getMonthlyIncome() {

@@ -2,10 +2,12 @@ package app.core;
 
 public class Classroom {
 
+	public static final int SIZE = 10;
+
 	private int id;
 	private Type type;
 	private Trainer trainer;
-	private Member[] members = new Member[10];
+	private Member[] members = new Member[SIZE];
 
 	public Classroom(int id, Type type, Trainer trainer) {
 		super();
