@@ -14,7 +14,7 @@ public class Address {
 	}
 
 	public enum City {
-		TEL_AVIV, JERUSALEM, HAIFA, BEER_SHEVE;
+		TEL_AVIV, JERUSALEM, HAIFA, BEER_SHEVE, METULA, YERUCHAM, ROSH_HNIKRA, EILAT;
 	}
 
 	public City getCity() {

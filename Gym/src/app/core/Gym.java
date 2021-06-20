@@ -1,8 +1,8 @@
 package app.core;
 
 public class Gym {
-
-	private Classroom[] classrooms = new Classroom[5];
+	public static final int SIZE = 5;
+	private Classroom[] classrooms = new Classroom[SIZE];
 
 	public Classroom[] getClassrooms() {
 		return classrooms;
