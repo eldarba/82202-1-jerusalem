@@ -2,6 +2,7 @@ package e.sort;
 
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 public class Demo1 {
@@ -48,15 +49,44 @@ public class Demo1 {
 
 					new Person(333, "ccc", 12),
 
-					new Person(111, "bbb", 6),
+					new Person(111, "bbb", 66),
 
 					new Person(444, "aaa", 18)
 
 			);
-			System.out.println(list);
+//			System.out.println(list);
+			System.out.println("print by insert order");
+			printCollection(list);
+
+			// sort by natural order - id
 			list.sort(null);
-			System.out.println(list);
+//			System.out.println(list);
+			System.out.println("sort by natural order - id");
+			printCollection(list);
+
+			// sort by other order - age
+			PersonAgeComparator ageComparator = new PersonAgeComparator();
+			list.sort(ageComparator);
+//			System.out.println(list);
+			System.out.println("sort by other order - age");
+			printCollection(list);
+
+			// sort by other order - name
+			PersonNameComparator nameComparator = new PersonNameComparator();
+			list.sort(nameComparator);
+//			System.out.println(list);
+			System.out.println("sort by other order - name");
+			printCollection(list);
 		}
 		System.out.println("============================");
+
+	}
+
+	private static void printCollection(Collection<Person> col) {
+		for (Object object : col) {
+			System.out.println(object);
+		}
+		System.out.println("=============");
+
 	}
 }
