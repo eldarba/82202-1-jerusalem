@@ -87,6 +87,5 @@ public class Demo1 {
 			System.out.println(object);
 		}
 		System.out.println("=============");
-
 	}
 }
