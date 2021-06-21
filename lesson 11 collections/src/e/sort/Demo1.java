@@ -41,5 +41,22 @@ public class Demo1 {
 			System.out.println(list);
 		}
 		System.out.println("============================");
+		{
+			List<Person> list = Arrays.asList(
+
+					new Person(555, "ddd", 95),
+
+					new Person(333, "ccc", 12),
+
+					new Person(111, "bbb", 6),
+
+					new Person(444, "aaa", 18)
+
+			);
+			System.out.println(list);
+			list.sort(null);
+			System.out.println(list);
+		}
+		System.out.println("============================");
 	}
 }
