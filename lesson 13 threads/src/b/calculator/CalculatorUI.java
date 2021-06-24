@@ -10,6 +10,12 @@ public class CalculatorUI {
 
 	public static void main(String[] args) {
 
+		// creating a daemon thread to show the time
+		TimeThread timeThread = new TimeThread();
+		timeThread.setDaemon(true);
+		timeThread.start();
+		//
+
 		CalculatorUI ui = new CalculatorUI();
 		ui.startUi();
 	}
