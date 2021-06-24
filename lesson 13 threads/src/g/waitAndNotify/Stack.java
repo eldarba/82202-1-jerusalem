@@ -29,11 +29,11 @@ public class Stack {
 			}
 		}
 		notify();
-		return stack.get(stack.size() - 1);
+		return stack.remove(stack.size() - 1);
 	}
 
 	@Override
-	public String toString() {
+	public synchronized String toString() {
 		return "Stack [stack=" + stack + "]";
 	}
 
