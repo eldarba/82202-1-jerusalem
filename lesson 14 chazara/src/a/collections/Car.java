@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import b.threads.CarDriveStopperThread;
+
 public class Car {
 
 	public static final int MAX_PASSANGERS = 5;

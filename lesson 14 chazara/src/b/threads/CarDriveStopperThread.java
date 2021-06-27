@@ -1,4 +1,6 @@
-package a.collections;
+package b.threads;
+
+import a.collections.Car;
 
 public class CarDriveStopperThread extends Thread {
 

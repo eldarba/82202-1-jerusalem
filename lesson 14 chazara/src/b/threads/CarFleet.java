@@ -1,7 +1,9 @@
-package a.collections;
+package b.threads;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import a.collections.Car;
 
 public class CarFleet {
 

@@ -1,4 +1,4 @@
-package a.collections;
+package b.threads;
 
 public class CarFleetApp {
 
