@@ -11,7 +11,7 @@ public class Car {
 	public static final int MAX_PASSANGERS = 5;
 	private int number;
 	private boolean isDriving;
-	Set<Person> passangers;
+	private Set<Person> passangers;
 
 	public Car(int number) {
 		super();
@@ -22,8 +22,7 @@ public class Car {
 		if (this.isDriving) {
 			throw new CarException(this + " is already moving");
 		} else {
-			this.isDriving = true;
-			new CarDriveStopperThread(this, seconds).start();
+			new Thread(new CarDriveStopperThread(this, seconds)).start();
 		}
 	}
 

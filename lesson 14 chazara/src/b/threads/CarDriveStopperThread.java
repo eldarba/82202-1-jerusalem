@@ -2,7 +2,7 @@ package b.threads;
 
 import a.collections.Car;
 
-public class CarDriveStopperThread extends Thread {
+public class CarDriveStopperThread implements Runnable {
 
 	private Car car;
 	private int secondsToWait;
@@ -15,12 +15,13 @@ public class CarDriveStopperThread extends Thread {
 
 	@Override
 	public void run() {
+		car.setDriving(true); // start driving
 		try {
 			Thread.sleep(secondsToWait * 1000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		car.setDriving(false);
+		car.setDriving(false); // stop driving
 		System.out.println(car + " has stopped");
 	}
 
