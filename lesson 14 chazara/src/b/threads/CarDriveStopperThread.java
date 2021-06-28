@@ -15,6 +15,7 @@ public class CarDriveStopperThread implements Runnable {
 
 	@Override
 	public void run() {
+		System.out.println(car + " started driving");
 		car.setDriving(true); // start driving
 		try {
 			Thread.sleep(secondsToWait * 1000);

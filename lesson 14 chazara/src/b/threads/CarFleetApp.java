@@ -12,6 +12,7 @@ public class CarFleetApp {
 		app.fleet.printAllCars();
 
 		// start 2 cars - the waiting time will take place in a separate thread
+		app.fleet.startCar(106, 15);
 		app.fleet.startCar(102, 10);
 		app.fleet.startCar(103, 5);
 
