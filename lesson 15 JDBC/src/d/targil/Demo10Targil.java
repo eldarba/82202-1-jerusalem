@@ -1,4 +1,4 @@
-package c.statements;
+package d.targil;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
