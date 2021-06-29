@@ -1,0 +1,5 @@
+Hello Java IO
+aaa
+vvv
+ggg
+ωμεν

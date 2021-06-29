@@ -1,17 +1,8 @@
 eclipse.preferences.version=1
 org.eclipse.jdt.core.compiler.codegen.inlineJsrBytecode=enabled
-org.eclipse.jdt.core.compiler.codegen.methodParameters=do not generate
-<<<<<<< HEAD
 org.eclipse.jdt.core.compiler.codegen.targetPlatform=16
-=======
-org.eclipse.jdt.core.compiler.codegen.targetPlatform=11
->>>>>>> branch 'master' of https://github.com/eldarba/82202-1-jerusalem
 org.eclipse.jdt.core.compiler.codegen.unusedLocal=preserve
-<<<<<<< HEAD
 org.eclipse.jdt.core.compiler.compliance=16
-=======
-org.eclipse.jdt.core.compiler.compliance=11
->>>>>>> branch 'master' of https://github.com/eldarba/82202-1-jerusalem
 org.eclipse.jdt.core.compiler.debug.lineNumber=generate
 org.eclipse.jdt.core.compiler.debug.localVariable=generate
 org.eclipse.jdt.core.compiler.debug.sourceFile=generate
@@ -19,10 +10,5 @@ org.eclipse.jdt.core.compiler.problem.assertIdentifier=error
 org.eclipse.jdt.core.compiler.problem.enablePreviewFeatures=disabled
 org.eclipse.jdt.core.compiler.problem.enumIdentifier=error
 org.eclipse.jdt.core.compiler.problem.reportPreviewFeatures=warning
-<<<<<<< HEAD
 org.eclipse.jdt.core.compiler.release=enabled
 org.eclipse.jdt.core.compiler.source=16
-=======
-org.eclipse.jdt.core.compiler.release=disabled
-org.eclipse.jdt.core.compiler.source=11
->>>>>>> branch 'master' of https://github.com/eldarba/82202-1-jerusalem
