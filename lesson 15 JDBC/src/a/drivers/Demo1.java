@@ -6,6 +6,11 @@ import java.util.Enumeration;
 
 public class Demo1 {
 
+	/**
+	 * this method demonstrates JDBC drivers
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 
 		Enumeration<Driver> drivers = DriverManager.getDrivers();
