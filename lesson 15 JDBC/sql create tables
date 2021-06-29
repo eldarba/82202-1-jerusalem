@@ -1,0 +1,13 @@
+create table customers(
+customerId int,
+customerName varchar(45),
+primary key(customerId)
+);
+
+create table orders(
+orderId int,
+customerId int,
+orderPrice float,
+primary key(orderId),
+foreign key (customerId) references customers(customerId)
+);
