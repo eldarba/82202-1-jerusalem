@@ -21,7 +21,7 @@ public class TaskAlertThread extends Thread {
 				Thread.sleep(1000);
 				List<Task> tasks = this.schedualler.getAllTasksDueUntil(LocalDateTime.now());
 				for (Task task : tasks) {
-					if (!task.isAlertPopped()) {
+					if (task.isDone() == false && !task.isAlertPopped()) {
 						System.out.println("!!! DEADLINE ALERT - " + task);
 						task.setAlertPopped(true);
 					}
