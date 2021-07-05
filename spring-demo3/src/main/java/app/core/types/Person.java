@@ -1,8 +1,11 @@
 package app.core.types;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component("p1")
+//@Scope("singleton") // default
+@Scope("prototype")
 public class Person {
 
 	{
