@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 import app.core.types.Classroom;
 import app.core.types.MathTeacher;
@@ -11,6 +12,7 @@ import app.core.types.Teacher;
 
 @Configuration
 @ComponentScan
+@PropertySource("application.properties")
 public class Config {
 
 	@Bean
