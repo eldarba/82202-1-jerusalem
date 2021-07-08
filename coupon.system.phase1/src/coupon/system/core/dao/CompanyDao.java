@@ -7,4 +7,10 @@ public interface CompanyDao {
 
 	int createCompany(Company company) throws CouponSystemException;
 
+	/**
+	 * @param company the company to update
+	 * @throws CouponSystemException if the specified company not found
+	 */
+	void updateCompany(Company company) throws CouponSystemException;
+
 }

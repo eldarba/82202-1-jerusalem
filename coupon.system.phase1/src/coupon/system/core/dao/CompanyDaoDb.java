@@ -36,4 +36,24 @@ public class CompanyDaoDb implements CompanyDao {
 		}
 	}
 
+	@Override
+	public void updateCompany(Company company) throws CouponSystemException {
+		Connection con = ConnectionPool.getInstance().getConnection();
+		String sql = "update company set name=?, email=?, password=? where id=?";
+		try (PreparedStatement pstmt = con.prepareStatement(sql);) {
+			pstmt.setString(1, company.getName());
+			pstmt.setString(2, company.getEmail());
+			pstmt.setString(3, company.getPassword());
+			pstmt.setInt(4, company.getId());
+			int rowCount = pstmt.executeUpdate();
+			if (rowCount == 0) {
+				throw new CouponSystemException("updateCompany faild. company id " + company.getId() + " not found");
+			}
+		} catch (SQLException e) {
+			throw new CouponSystemException("updateCompany failed", e);
+		} finally {
+			ConnectionPool.getInstance().restoreConnection(con);
+		}
+	}
+
 }
