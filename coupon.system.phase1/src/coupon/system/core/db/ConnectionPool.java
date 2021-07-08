@@ -84,6 +84,7 @@ public class ConnectionPool {
 			for (Connection connection : connections) {
 				connection.close();
 			}
+			System.out.println("Connectionpool down");
 		} catch (SQLException e) {
 			throw new CouponSystemException("closeAllConnections faild", e);
 		}
