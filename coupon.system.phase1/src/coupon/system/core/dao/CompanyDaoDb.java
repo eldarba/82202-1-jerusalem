@@ -13,8 +13,11 @@ public class CompanyDaoDb implements CompanyDao {
 
 	@Override
 	public int createCompany(Company company) throws CouponSystemException {
+		// get a connection from the pool
 		Connection con = ConnectionPool.getInstance().getConnection();
+		// set the SQL command as a String
 		String sql = "insert into company values(0, ?, ?, ?)";
+		// create a statement object to execute the SQL command
 		try (PreparedStatement pstmt = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);) {
 			pstmt.setString(1, company.getName());
 			pstmt.setString(2, company.getEmail());

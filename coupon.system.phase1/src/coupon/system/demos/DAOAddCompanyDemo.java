@@ -13,14 +13,15 @@ public class DAOAddCompanyDemo {
 			// create a company
 			Company company = new Company();
 			// set company state
-			company.setName("AAA");
-			company.setEmail("aaa@Mail");
-			company.setPassword("aaaPass");
+			company.setName("MMM");
+			company.setEmail("mmm@Mail");
+			company.setPassword("mmmPass");
 			// create a DAO
 			CompanyDao companyDao = new CompanyDaoDb();
 			// use the DAO to add the company to the database
-			companyDao.createCompany(company);
+			int id = companyDao.createCompany(company);
 			// print the created company
+			System.out.println(id);
 			System.out.println(company);
 		} catch (CouponSystemException e) {
 			e.printStackTrace();
