@@ -12,14 +12,15 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 @Component
-@Aspect
+//@Aspect
 public class LogAspect2 {
 
-	@Pointcut("execution(String div(int, int))")
-	public void div() {
+	@Pointcut("execution(String div(int, int))") // pointcut expression
+	public void div() { // pointcut signature
 	}
 
-	@Before("div()")
+	// advice
+	@Before("div()") // use pointcut signature to apply pointcut expression
 	public void beforeDiv(JoinPoint jp) {
 		System.out.println(">>> @Before " + jp.getSignature().getName());
 	}
@@ -52,7 +53,8 @@ public class LogAspect2 {
 		try {
 			System.out.println(">>> @Around - before proceed");
 			Object res = jp.proceed();
-			return res;
+			return res; // we can return the result as is
+//			return "מה שבא לי להחזיר"; // we can change the return result if needed
 		} catch (Throwable e) {
 			// 1. we can handle in the advice
 			return "INFINITY"; // provide alternative result
