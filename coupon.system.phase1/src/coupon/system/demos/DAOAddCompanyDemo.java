@@ -19,7 +19,7 @@ public class DAOAddCompanyDemo {
 			// create a DAO
 			CompanyDao companyDao = new CompanyDaoDb();
 			// use the DAO to add the company to the database
-			int id = companyDao.createCompany(company);
+			int id = companyDao.addCompany(company);
 			// print the created company
 			System.out.println(id);
 			System.out.println(company);

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import coupon.system.core.beans.Company;
 import coupon.system.core.db.ConnectionPool;
@@ -12,7 +13,7 @@ import coupon.system.core.exceptions.CouponSystemException;
 public class CompanyDaoDb implements CompanyDao {
 
 	@Override
-	public int createCompany(Company company) throws CouponSystemException {
+	public int addCompany(Company company) throws CouponSystemException {
 		// get a connection from the pool
 		Connection con = ConnectionPool.getInstance().getConnection();
 		// set the SQL command as a String
@@ -54,6 +55,30 @@ public class CompanyDaoDb implements CompanyDao {
 		} finally {
 			ConnectionPool.getInstance().restoreConnection(con);
 		}
+	}
+
+	@Override
+	public boolean isCompanyExist(String email, String password) throws CouponSystemException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void deleteCompany(int companyId) throws CouponSystemException {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public List<Company> getAllCompanies() throws CouponSystemException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Company getOneCompany() throws CouponSystemException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
