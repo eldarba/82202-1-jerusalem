@@ -15,5 +15,7 @@ public @interface MyLogAnnotation {
 
 	int value() default 1;
 
-	boolean condition() default false;
+	boolean printMethodName() default false;
+
+	String[] args() default {};
 }
