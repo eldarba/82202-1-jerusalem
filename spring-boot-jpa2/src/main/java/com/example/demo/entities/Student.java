@@ -10,13 +10,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 @Data
-@AllArgsConstructor
+@RequiredArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
 @Entity
@@ -24,14 +25,21 @@ public class Student {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	@NonNull
+	private Integer id;
+	@NonNull
 	private String name;
-	private int age;
+	@NonNull
+	private Integer age;
+	@NonNull
 	private String email;
+	@NonNull
 	@Enumerated(EnumType.STRING)
 	private Gender gender;
+	@NonNull
 	private LocalDate enrolDate;
-	private boolean active;
+	@NonNull
+	private Boolean active;
 	@ManyToOne
 	private University university;
 
