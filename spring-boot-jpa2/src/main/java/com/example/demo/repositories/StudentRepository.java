@@ -47,6 +47,6 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
 
 	List<Student> findByEnrolDateBefore(LocalDate enrolDate);
 
-	List<Student> findByUniversity(int universitId);
+	List<Student> findByUniversityId(int universitId);
 
 }
