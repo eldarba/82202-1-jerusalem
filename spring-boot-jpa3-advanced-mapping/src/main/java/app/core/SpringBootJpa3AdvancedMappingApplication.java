@@ -29,15 +29,20 @@ public class SpringBootJpa3AdvancedMappingApplication {
 //			em.getTransaction().commit();
 //		}
 
-//		{ // find a company
-//			System.out.println("========================");
-//			em.getTransaction().begin();
-//			Company company = em.find(Company.class, 1);
-//			System.out.println(company);
+		{ // find a company
+			System.out.println("========================");
+			em.getTransaction().begin();
+			Company company = em.find(Company.class, 3);
+			System.out.println(company);
+			System.out.println(company.getAddress());
+
+//			company.setAddress(new CompanyAddress(0, "Tel Aviv", "Israel"));
+//
 //			System.out.println(company.getAddress());
-//			em.getTransaction().commit();
-//			System.out.println("========================");
-//		}
+
+			em.getTransaction().commit();
+			System.out.println("========================");
+		}
 //		{ // delete a company
 //			System.out.println("========================");
 //			em.getTransaction().begin();
@@ -48,22 +53,22 @@ public class SpringBootJpa3AdvancedMappingApplication {
 //			em.getTransaction().commit();
 //			System.out.println("========================");
 //		}
-		{ // delete a company
-			System.out.println("========================");
-			em.getTransaction().begin();
-			Company company = em.find(Company.class, 2);
-			if (company != null) {
-				CompanyAddress address = company.getAddress();
-				if (address != null) {
-					System.out.println(address);
-					company.setAddress(null);
-					em.remove(address);
-					System.out.println(">>>");
-				}
-			}
-			em.getTransaction().commit();
-			System.out.println("========================");
-		}
+//		{ // delete a company
+//			System.out.println("========================");
+//			em.getTransaction().begin();
+//			Company company = em.find(Company.class, 3);
+//			if (company != null) {
+//				CompanyAddress address = company.getAddress();
+//				if (address != null) {
+//					System.out.println(address);
+//					company.setAddress(null); // to delete the address we must remove it from the company
+//					em.remove(address);
+//				}
+//			}
+//			em.getTransaction().commit();
+//			System.out.println(">>>");
+//			System.out.println("========================");
+//		}
 
 	}
 
