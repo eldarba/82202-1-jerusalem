@@ -4,26 +4,28 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
-/**
- * @author jbt
- *
- */
 @Entity
-public class Review {
+public class Student {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String comment;
+	private String name;
+	@ManyToOne
+	@JoinColumn(name = "university_id")
+	private University university;
 
-	public Review() {
+	public Student() {
 	}
 
-	public Review(int id, String comment) {
+	public Student(int id, String name, University university) {
 		super();
 		this.id = id;
-		this.comment = comment;
+		this.name = name;
+		this.university = university;
 	}
 
 	public int getId() {
@@ -34,17 +36,25 @@ public class Review {
 		this.id = id;
 	}
 
-	public String getComment() {
-		return comment;
+	public String getName() {
+		return name;
 	}
 
-	public void setComment(String comment) {
-		this.comment = comment;
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public University getUniversity() {
+		return university;
+	}
+
+	public void setUniversity(University university) {
+		this.university = university;
 	}
 
 	@Override
 	public String toString() {
-		return "Review [id=" + id + ", comment=" + comment + "]";
+		return "Student [id=" + id + ", name=" + name + "]";
 	}
 
 	@Override
@@ -63,7 +73,7 @@ public class Review {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Review other = (Review) obj;
+		Student other = (Student) obj;
 		if (id != other.id)
 			return false;
 		return true;

@@ -5,25 +5,23 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-/**
- * @author jbt
- *
- */
 @Entity
-public class Review {
+public class University {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String comment;
+	private String name;
+	private String city;
 
-	public Review() {
+	public University() {
 	}
 
-	public Review(int id, String comment) {
+	public University(int id, String name, String city) {
 		super();
 		this.id = id;
-		this.comment = comment;
+		this.name = name;
+		this.city = city;
 	}
 
 	public int getId() {
@@ -34,17 +32,25 @@ public class Review {
 		this.id = id;
 	}
 
-	public String getComment() {
-		return comment;
+	public String getName() {
+		return name;
 	}
 
-	public void setComment(String comment) {
-		this.comment = comment;
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
 	}
 
 	@Override
 	public String toString() {
-		return "Review [id=" + id + ", comment=" + comment + "]";
+		return "University [id=" + id + ", name=" + name + ", city=" + city + "]";
 	}
 
 	@Override
@@ -63,7 +69,7 @@ public class Review {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Review other = (Review) obj;
+		University other = (University) obj;
 		if (id != other.id)
 			return false;
 		return true;
