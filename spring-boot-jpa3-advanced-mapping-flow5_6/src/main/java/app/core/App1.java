@@ -48,8 +48,7 @@ public class App1 {
 		{ // find university and print it and all its students
 			Scanner sc = new Scanner(System.in);
 			System.out.print("choose university: ");
-			int id = sc.nextInt();
-			sc.close();
+			int id = Integer.parseInt(sc.nextLine());
 			University u = em.find(University.class, id);
 			System.out.println(u != null ? u : "not found");
 			if (u != null) {
@@ -58,7 +57,17 @@ public class App1 {
 					System.out.println(s);
 				}
 				System.out.println("========== ======== ==============");
+
+				System.out.println("do you wand to add a student? y/n");
+				String input = sc.nextLine();
+				if (input.equalsIgnoreCase("y")) {
+					System.out.print("enter student name: ");
+					String name = sc.nextLine();
+					Student st = new Student(0, name);
+					u.addStudent(st);
+				}
 			}
+			sc.close();
 		}
 
 		em.getTransaction().commit();
