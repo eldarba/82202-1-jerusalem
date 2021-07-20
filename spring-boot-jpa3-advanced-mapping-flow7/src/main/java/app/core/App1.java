@@ -7,10 +7,14 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
 
+import org.hibernate.Hibernate;
+import org.hibernate.Session;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import app.core.entities.Coupon;
+import app.core.entities.Customer;
 import app.core.entities.Student;
 import app.core.entities.University;
 
@@ -21,56 +25,61 @@ public class App1 {
 
 		ConfigurableApplicationContext ctx = SpringApplication.run(App1.class, args);
 
-//		// we need an entity manager that comes from a factory
-//		EntityManagerFactory factory = ctx.getBean(EntityManagerFactory.class);
-//		EntityManager em = factory.createEntityManager();
+		// we need an entity manager that comes from a factory
+		EntityManagerFactory factory = ctx.getBean(EntityManagerFactory.class);
+		EntityManager em = factory.createEntityManager();
+
+		em.getTransaction().begin();
+
+//		{ // save customers with coupons
+//			Coupon coupon1 = new Coupon(0, "FOOD");
+//			Coupon coupon2 = new Coupon(0, "TOUR");
+//			Coupon coupon3 = new Coupon(0, "CLOTHING");
+//			Coupon coupon4 = new Coupon(0, "ELECTRICITY");
 //
-//		em.getTransaction().begin();
-//		// create 3 universities with students
-////		{
-////			University brIlan = new University(0, "Bar Ilan", "Ramat Gan");
-////			University ivrit = new University(0, "HaIvrit", "Jerusalem");
-////			University benGurion = new University(0, "Ben Gurion", "Beer Sheva");
-////			brIlan.addStudent(new Student(0, "aaa"));
-////			brIlan.addStudent(new Student(0, "bbb"));
-////			brIlan.addStudent(new Student(0, "ccc"));
-////			ivrit.addStudent(new Student(0, "ddd"));
-////			ivrit.addStudent(new Student(0, "eee"));
-////			ivrit.addStudent(new Student(0, "fff"));
-////			benGurion.addStudent(new Student(0, "ggg"));
-////			benGurion.addStudent(new Student(0, "hhh"));
-////			benGurion.addStudent(new Student(0, "iii"));
-////			em.persist(brIlan);
-////			em.persist(ivrit);
-////			em.persist(benGurion);
-////		}
+//			Customer customer1 = new Customer(0, "John", "john@mail");
+//			customer1.addCoupon(coupon1);
+//			customer1.addCoupon(coupon2);
+//			customer1.addCoupon(coupon3);
 //
-//		{ // find university and print it and all its students
+//			Customer customer2 = new Customer(0, "Sarrah", "sarrah@mail");
+//			customer2.addCoupon(coupon2);
+//			customer2.addCoupon(coupon3);
+//
+//			em.persist(customer1);
+//			em.persist(customer2);
+//			em.persist(coupon4);
+//		}
+
+//		{ // find a customer and print all of their coupons
 //			Scanner sc = new Scanner(System.in);
-//			System.out.print("choose university: ");
+//			System.out.print("enter customer id: ");
 //			int id = Integer.parseInt(sc.nextLine());
-//			University u = em.find(University.class, id);
-//			System.out.println(u != null ? u : "not found");
-//			if (u != null) {
-//				System.out.println("========== students ==============");
-//				for (Student s : u.getStudents()) {
-//					System.out.println(s);
-//				}
-//				System.out.println("========== ======== ==============");
+//			Customer c = em.find(Customer.class, id);
+//			System.out.println(c);
 //
-//				System.out.println("do you wand to add a student? y/n");
-//				String input = sc.nextLine();
-//				if (input.equalsIgnoreCase("y")) {
-//					System.out.print("enter student name: ");
-//					String name = sc.nextLine();
-//					Student st = new Student(0, name);
-//					u.addStudent(st);
-//				}
+//			for (Coupon coupon : c.getCoupons()) {
+//				System.out.println(coupon);
 //			}
 //			sc.close();
 //		}
-//
-//		em.getTransaction().commit();
+
+		{// delete customer - check that coupons are not deleted and join table is
+			// updated
+
+			Customer c = em.find(Customer.class, 1);
+			System.out.println(c);
+			em.remove(c);
+
+		}
+
+//		{ // Hibernate is the JPA default implementation
+//			Session session = em.unwrap(Session.class);
+//			Object id = session.save(new Coupon(0, "stam_coupon"));
+//			System.out.println(id);
+//		}
+
+		em.getTransaction().commit();
 	}
 
 }
