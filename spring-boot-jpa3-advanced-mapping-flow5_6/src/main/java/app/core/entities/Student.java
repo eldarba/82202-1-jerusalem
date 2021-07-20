@@ -21,11 +21,10 @@ public class Student {
 	public Student() {
 	}
 
-	public Student(int id, String name, University university) {
+	public Student(int id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.university = university;
 	}
 
 	public int getId() {
