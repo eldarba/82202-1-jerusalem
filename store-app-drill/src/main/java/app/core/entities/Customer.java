@@ -1,5 +1,6 @@
 package app.core.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -37,5 +38,20 @@ public class Customer {
 	@Exclude
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
 	private List<Order> orders;
+
+	public void setOrders(List<Order> orders) {
+		for (Order order : orders) {
+			order.setCustomer(this);
+		}
+		this.orders = orders;
+	}
+
+	public void addOrder(Order order) {
+		if (this.orders == null) {
+			this.orders = new ArrayList<>();
+		}
+		order.setCustomer(this);
+		this.orders.add(order);
+	}
 
 }

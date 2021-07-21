@@ -1,5 +1,6 @@
 package app.core.services;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,6 +36,26 @@ public class Store {
 
 	public List<Order> getCustomerOrders(int customerId) {
 		return this.orderRepo.findByCustomerId(customerId);
+	}
+
+	public List<Customer> getAllCustomers() {
+		return this.customerRepo.findAll();
+	}
+
+	public List<Customer> getAllCustomers(String city) {
+		return this.customerRepo.findByCity(city);
+	}
+
+	public List<Order> getAllOrders() {
+		return this.orderRepo.findAll();
+	}
+
+	public List<Order> getAllOverdueOrders() {
+		return this.orderRepo.findByDeliverBefore(LocalDate.now());
+	}
+
+	public List<Order> getAllDueIn(int days) {
+		return this.orderRepo.findByDeliver(LocalDate.now().plusDays(days));
 	}
 
 }

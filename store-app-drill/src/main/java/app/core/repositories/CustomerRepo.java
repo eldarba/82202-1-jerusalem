@@ -8,4 +8,6 @@ import app.core.entities.Customer;
 
 public interface CustomerRepo extends JpaRepository<Customer, Integer> {
 
+	List<Customer> findByCity(String city);
+
 }
