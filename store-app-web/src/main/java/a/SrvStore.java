@@ -2,6 +2,7 @@ package a;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,34 +10,34 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/srv1")
-public class Srv1 extends HttpServlet {
+import app.core.Item;
+import app.core.Store;
+
+@WebServlet("/srv-store")
+public class SrvStore extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-// url:
-// http://localhost:8080/store-app-web/srv1
-// GET
+	private Store store = new Store();
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// out will add content to the http response body
+		List<Item> items = store.getItems();
 		PrintWriter out = response.getWriter();
-		out.println("hello from srv1 - GET");
-
-		String name = request.getParameter("name");
-		String email = request.getParameter("email");
-		out.println(name);
-		out.println(email);
+		out.println("===== Items =====");
+		for (Item item : items) {
+			out.println(item);
+		}
+		out.println("=====-------=====");
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// out will add content to the http response body
+		String itemName = req.getParameter("itemName");
+		double itemPrice = Double.parseDouble(req.getParameter("itemPrice"));
+		Item item = new Item(itemName, itemPrice);
+		store.add(item);
 		PrintWriter out = resp.getWriter();
-		out.println("hello from srv1 - POST");
-		String name = req.getParameter("name");
-		String email = req.getParameter("email");
-		out.println(name);
-		out.println(email);
+		out.println("Added: " + item);
 	}
 
 }
