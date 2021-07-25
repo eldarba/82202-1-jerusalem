@@ -53,7 +53,6 @@ public class SrvStore extends HttpServlet {
 			store.add(item);
 			out.println("Added: " + item);
 		}
-
 	}
 
 	@Override
@@ -67,7 +66,17 @@ public class SrvStore extends HttpServlet {
 		} else {
 			out.println("Update of: " + item + " failed - not found");
 		}
+	}
 
+	@Override
+	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String itemName = req.getParameter("itemName");
+		PrintWriter out = resp.getWriter();
+		if (store.delete(itemName)) {
+			out.println("Deleted " + itemName);
+		} else {
+			out.println("Delete " + itemName + " failed - not found");
+		}
 	}
 
 }
