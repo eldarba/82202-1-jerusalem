@@ -2,7 +2,9 @@ package a;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,14 +32,42 @@ public class SrvStore extends HttpServlet {
 		out.println("=====-------=====");
 	}
 
+//	@Override
+//	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//		String itemName = req.getParameter("itemName");
+//		double itemPrice = Double.parseDouble(req.getParameter("itemPrice"));
+//		Item item = new Item(itemName, itemPrice);
+//		store.add(item);
+//		PrintWriter out = resp.getWriter();
+//		out.println("Added: " + item);
+//	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Map<String, String[]> map = req.getParameterMap();
+		String[] names = map.get("itemName");
+		String[] prices = map.get("itemPrice");
+
+		PrintWriter out = resp.getWriter();
+		for (int i = 0; i < names.length; i++) {
+			Item item = new Item(names[i], Double.parseDouble(prices[i]));
+			store.add(item);
+			out.println("Added: " + item);
+		}
+
+	}
+
+	@Override
+	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String itemName = req.getParameter("itemName");
 		double itemPrice = Double.parseDouble(req.getParameter("itemPrice"));
 		Item item = new Item(itemName, itemPrice);
-		store.add(item);
 		PrintWriter out = resp.getWriter();
-		out.println("Added: " + item);
+		if (store.update(item)) {
+			out.println("Updated: " + item);
+		} else {
+			out.println("Update of: " + item + " failed - not found");
+		}
+
 	}
 
 }
