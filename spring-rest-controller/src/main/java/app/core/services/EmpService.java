@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import app.core.entities.Employee;
+import app.core.exceptions.EmployeeException;
 import app.core.repos.EmpRepo;
 
 @Service
@@ -35,18 +36,27 @@ public class EmpService {
 		return opt.isPresent() ? opt.get() : null;
 	}
 
+	public Employee getEmployee2(long id) throws EmployeeException {
+		Optional<Employee> opt = this.empRepo.findById(id);
+		if (opt.isPresent()) {
+			return opt.get();
+		} else {
+			throw new EmployeeException("employe with id " + id + " not found");
+		}
+	}
+
 	public List<Employee> getAllEmps() {
 		return this.empRepo.findAll();
 	}
 
-	public boolean updateEmployee(Employee employee) {
+	public void updateEmployee(Employee employee) throws EmployeeException {
 		Employee empFromDb = this.getEmployee(employee.getId());
 		if (empFromDb != null) {
 			empFromDb.setName(employee.getName());
 			empFromDb.setRole(employee.getRole());
-			return true;
+		} else {
+			throw new EmployeeException("updateEmployee failed - not found");
 		}
-		return false;
 	}
 
 	public boolean deleteEmployee(long id) {
