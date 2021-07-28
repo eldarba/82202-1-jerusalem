@@ -22,7 +22,7 @@ public class GUIApp {
 
 	}
 
-	private void createGui() {
+	private void createGui() {//
 		JFrame fr = new JFrame("Employees");
 		fr.setLayout(null);
 		fr.setBounds(100, 100, 600, 300);
