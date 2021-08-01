@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+    <style>
+        
+        div {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+        border: 5px solid black;
+        padding: 5px;
+        box-sizing: border-box;
+      }
+      
+      div#pos-rel {
+          position: relative;
+          top: 30px;
+          left: 20px;
+          z-index: -1;
+        }
+
+        html,
+        body {
+          height: 200%;
+          width: 200%;
+          margin: 0;
+        }
+
+        div#pos-fix {
+            position: fixed;
+            right: 0px;
+            bottom: 0px;
+        }
+        </style>
+  </head>
+  <body>
+      <div>static 1</div>
+    <div id="pos-rel">relative</div>
+    <div id="pos-fix">fixed</div>
+  </body>
+</html>
