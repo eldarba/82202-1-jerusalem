@@ -1,0 +1,13 @@
+h1,h2{
+    color: violet;
+    text-align: center;
+    text-decoration: underline wavy;
+}
+
+h2.the-class{
+    color: green;
+}
+
+p.the-class{
+    color: blue;
+}

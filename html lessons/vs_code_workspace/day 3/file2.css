@@ -1,0 +1,11 @@
+/* combining selectors */
+
+h1, 
+h2, 
+.red-class, 
+#p1,
+[dir='rtl']
+{
+    color: red;
+    
+}
