@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>basics</h1>
+    <div id="x"></div>
+    <div id="y"></div>
+    <div id="z"></div>
+    <script>
+
+        { // local scope
+            var x = 5; // var declarations are hoisted - always in global scope
+            let y = 10; // let declarations are NOT hoisted - known to local scope
+            const z = 300;
+            console.log(x);
+            console.log(y);
+            console.log(z);
+            // z = 400; // error - constants cannot be reassigned
+            console.log(z);
+            // display the data in the document
+            document.getElementById("x").innerHTML="x = " + x;
+            document.getElementById("y").innerHTML="y = " + y;
+            document.getElementById("z").innerHTML="z = " + z;
+        }
+        
+        console.log(x); // works because of hoisting
+        // console.log(y); // error - not in scope
+        // console.log(z); // error - not in scope
+
+    </script>
+
+    <script>
+        console.log(x); // works because of hoisting
+    </script>
+</body>
+
+</html>

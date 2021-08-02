@@ -62,7 +62,8 @@ public class EmpService {
 	public boolean deleteEmployee(long id) {
 		Employee empFromDb = this.getEmployee(id);
 		if (empFromDb != null) {
-			this.empRepo.delete(empFromDb);
+//			this.empRepo.delete(empFromDb);
+			this.empRepo.deleteById(id);
 			return true;
 		}
 		return false;

@@ -1,0 +1,12 @@
+h2{
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+}
+
+/*this is comment*/
+p{
+    border: 3px solid blue;
+    width: 250px;
+    color: blue;
+}
