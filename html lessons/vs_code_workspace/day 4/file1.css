@@ -1,0 +1,53 @@
+
+html, body{
+    margin: 0;
+    height: 200%;
+}
+div{
+    border: 1px solid black;
+    background-color: lightcoral;
+    width: 100px;
+    height: 100px;
+}
+
+#rel{
+    position: relative;
+    left: 20px;
+    bottom: 20px ;
+}
+
+#stick{
+    position: sticky;
+    left: 300px;
+    top: 50px;
+}
+
+fieldset{
+    border: 3px solid black;
+    width: 600px;
+    height: 400px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0;
+    margin: 0;
+}
+
+#in1{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+#in2{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#fix{
+    position: fixed;
+    left: 200px;
+    top: 20px;
+}

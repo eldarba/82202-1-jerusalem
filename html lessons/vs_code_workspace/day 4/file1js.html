@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>some name</title>
+</head>
+<body style="background-color: black; color: blanchedalmond;">
+   <h1>JavaScript</h1> 
+
+   <div>
+       <!-- a buuton with a listener that will call a function-->
+       <button onclick="f1();f2();">Click</button>
+    </div>
+    
+    <!-- a div with content to be changed by the function-->
+   <div id="div1">content</div>
+
+   <!-- script tag for JavaScript code-->
+   <script>
+       // a JavaScripty function
+       function f1() {
+           // getting a reference to an element in the document
+           var obj = window.document.getElementById("div1");
+           // change the state of the element
+           obj.innerHTML = "123";
+           obj.style.color="red";
+           console.dir(obj); // print the element with all details
+       }
+   </script>
+
+<script src="myCode.js"></script>
+
+</body>
+</html>
