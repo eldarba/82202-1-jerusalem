@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // define ann array
+        let arr = ["red", "green", "blue", "brown"];
+        // arrow method
+        let fn = (e, ind, arr) => console.log(e + " - " + ind + " - " + arr);
+        // call forEach and supply a callback function
+        arr.forEach(fn);
+
+        console.log("=========== the shorter way:");
+        
+        // usually we define arrow methods as function parameters directly
+        arr.forEach((e, ind, arr) => console.log(e + " - " + ind + " - " + arr));
+
+    </script>
+</body>
+
+</html>

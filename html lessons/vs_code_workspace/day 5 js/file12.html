@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // define ann array
+        let ages = [25, 30, 7, 80, 6, 10, 68];
+        console.log(ages);
+
+        let adults = ages.filter(currAge => currAge >= 18);
+        console.log(adults);
+
+        let sumAges = ages.reduce((sum, e) => sum += e);
+        console.log("sum of ages: " + sumAges);
+        
+        // solution with forEach - not recomended
+        let sum = 0;
+        ages.forEach(e => sum += e);
+        console.log("sum of ages: " + sum);
+
+
+
+
+    </script>
+</body>
+
+</html>
