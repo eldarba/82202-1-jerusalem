@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // define a class
+        class Person {
+            // CTOR
+            constructor(id, name, age) {
+                this.id = id;
+                this.name = name;
+                this.age = age;
+            }
+            // methods
+            growUp() {
+                this.age++;
+            }
+            toString() {
+                return "Person[id=" + this.id +
+                ", name=" + this.name +
+                ", age=" + this.age + "]";
+            }
+        }
+        
+        class Employee extends Person{
+            
+            salary;
+
+            constructor(id, name, age, salary){
+                super(id, name, age);
+                this.salary = salary;
+            }
+            
+        }
+        
+        // create objects
+        let p1 = new Person(101, "aaa", 33);
+        let p2 = new Person(102, "bbb", 44);
+        // print
+        console.log(p1.toString());
+        console.log(p2.toString());
+        
+        p2.growUp();
+        p2.growUp();
+        console.log(p2.toString());
+
+        let emp = new Employee(1, "aa", 45, 800);
+        console.log(emp);
+    </script>
+</body>
+
+</html>

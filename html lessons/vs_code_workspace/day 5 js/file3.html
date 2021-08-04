@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Defining Objects</h1>
+    <script>
+        let person = {
+            id: 101,
+            name: 'Dan',
+            age: 25,
+            getData: function () {
+                return 'Person[name=' + this.name + ', age=' + this.age + ']';
+            }
+        };
+
+        console.log(person.name);
+        console.log(person['name']);
+
+        console.log(person);
+        console.log(person.getData());
+        
+        // update the name and print
+        person.name = "Sam";
+        console.log(person);
+
+        // update the email and print
+        person.email = "sam@mail";
+        console.log(person);
+
+        console.log(typeof person);
+        console.log(typeof person.getData);
+        
+        
+    </script>
+</body>
+
+</html>

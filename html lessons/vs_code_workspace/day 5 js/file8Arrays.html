@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+
+<body>
+    <h1>Arrays</h1>
+    <div id="d1"></div>
+    <script>
+        let arr1 = ["aaa", 35, 100]; // create array
+        console.log(arr1); // print
+        console.log(arr1[1]); // access element by index
+        // another way is to us new
+        let arr2 = new Array(1,2,3,4,5); // create array using new
+        console.log(arr2); // print
+        // display array elements on the document
+        document.getElementById("d1").innerHTML = arr2;
+
+        // sort by alphabetical order
+        let names = ["fff", "ggg", "aaa", "ttt", "zzz"];
+        console.log(names);
+        names.reverse();
+        console.log(names);
+        names.sort();
+        console.log(names);
+        
+        
+        
+    </script>
+</body>
+
+</html>

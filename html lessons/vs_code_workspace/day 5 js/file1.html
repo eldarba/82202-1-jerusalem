@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+   <h1>types are dynamic</h1> 
+   <script>
+       let x; // type is undefined
+       x = 5; // type is number
+       x = true; // type is boolean
+       x = "aaa"; // type is string
+       x = {
+           id: 101,
+           name: "David"
+       };  // type is object
+
+       x = new Date();  // type is object
+       console.log(x);
+
+       x = new Date(2020, 0);
+       console.log(x);
+
+       x = new Date(2020, 0, 12);
+       console.log(x);
+
+       x = new Date(2020, 0, 12, 20, 5, 25);
+       console.log(x);
+      
+       x = new Date("1985-01-06");
+       console.log(x);
+
+       let hours = x.getHours() // objects can have methods
+
+       
+
+   </script>
+</body>
+</html>

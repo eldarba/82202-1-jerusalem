@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+<body onload="console.log('page loaded');">
+    <h1>events</h1>
+    choose page color <input id="in1" type="text" onchange="changeColor()">
+
+
+
+    <br>
+    <h3>copy input</h3>
+    <input id="in2" type="text" oninput="copy()">
+    <br>
+    <input id="in3" type="text">
+
+    <h3>Button</h3>
+    <button onclick="randomColor()">change</button>
+    <script>
+
+        function randomColor() {
+            let r = Math.floor(Math.random() * 256);
+            let g = Math.floor(Math.random() * 256);
+            let b = Math.floor(Math.random() * 256);
+
+            document.body.style.backgroundColor = 
+            "rgb(" + r + ", " + g + ", " + b + ")";
+        }
+
+        function copy() {
+            let in2 = document.getElementById("in2");
+            let in3 = document.getElementById("in3");
+            in3.value = in2.value;
+        }
+
+
+        function changeColor() {
+            let color = document.getElementById("in1").value;
+            document.body.style.backgroundColor = color;
+        }
+
+    </script>
+</body>
+
+</html>
