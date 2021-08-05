@@ -44,21 +44,52 @@
 
         function getAll() {
             // create a JS object for sending a request and getting a response
-            let xhttp = new XMLHttpRequest();
+            let xhttp = new XMLHttpRequest(); // ready state 0
 
             // set the callback function for ready state change
+            xhttp.onreadystatechange = function () {
+                let rs = xhttp.readyState;
+                switch (rs) {
+                    case 2:
+                        console.log("ready state 2: heders ready");
+                        break;
+                    case 3:
+                        console.log("ready state 3: response partly ready");
+                        break;
+                    case 4:
+                        console.log("ready state 4: response ready");
+                        console.log("response status: " + xhttp.status);
+                        console.log(xhttp.response);
+                        document.getElementById("resp").innerHTML = xhttp.response;
+                        break;
+                }
+            }
+
+            // define the request
+            xhttp.open("GET", "http://localhost:8080/api/item"); // ready state 1
+            // send the request
+            xhttp.send();
+        } 
+
+        function save() {
+            let name = document.getElementById("item-name").value;
+            let price = document.getElementById("item-price").value;
+            let item = new Item(0, name, price);
+            let itemAsJSON = JSON.stringify(item);
+            console.log(item);
+            console.log(itemAsJSON);
+            let xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
                 if(xhttp.readyState==4){
                     console.log(xhttp.response);
                     document.getElementById("resp").innerHTML = xhttp.response;
                 }
             }
-
-            // define the request
-            xhttp.open("GET", "http://localhost:8080/api/item");
-            // send the request
-            xhttp.send();
-        } 
+            xhttp.open("POST", "http://localhost:8080/api/item");
+            // set request header to tell server we send JSON in the request body
+            xhttp.setRequestHeader("Content-Type", "application/json");
+            xhttp.send(itemAsJSON); // put the JSON in the body
+        }
     </script>
 
 </body>
