@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        "use strict";
+
+
+        // define custome error
+        class PersonAgeError extends Error {
+            name = "PersonAgeError";
+        }
+
+        class Person {
+
+            constructor(id, name, age) {
+                this.id = id;
+                this.name = name;
+                this.setAge(age);
+            }
+
+            setAge(age) {
+                if (age >= 0 && age <= 120) {
+                    this.age = age;
+                } else {
+                    // throw general error
+                    // throw new Error("age " + age + " is invalid");
+
+                    throw new PersonAgeError("age " + age + " is invalid");
+
+                    // anything can be thrown
+                    // throw "age " + age + " is invalid";
+                }
+            }
+
+        }
+
+
+        try {
+            let p = new Person(101, "aaa", 44);
+            console.log(p);
+            p.setAge(150);
+            console.log(p);
+        } catch (error) {
+            console.log(error);
+            console.log(error.name);
+            console.log(error.message);
+        }
+
+        console.log("end of script");
+        
+
+    </script>
+    <script>
+        // "use strict";
+        // try {
+            //    let x = 5;
+            //     console.log(x);
+            // } catch (error) {
+                //     console.log("error name: " + error.name);
+        //     console.log("error message: " + error.message);
+
+        // }
+        // console.log("end of script");
+    </script>
+</body>
+
+</html>

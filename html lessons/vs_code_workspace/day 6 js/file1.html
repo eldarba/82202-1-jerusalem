@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+    let gr = Math.floor(Math.random()*15);
+    console.log("grade: ", gr);
+
+    switch (gr) {
+        case 0:
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+            console.log("failed");
+            break;
+        case 6:
+        case 7:
+            console.log("pass");
+            break;
+        case 8:
+        case 9:
+            console.log("good");
+            break;
+        case 10:
+            console.log("great");
+            break;
+        default:
+        console.log(gr + " is not a grade");
+            break;
+    }
+    
+    </script>
+</body>
+</html>
