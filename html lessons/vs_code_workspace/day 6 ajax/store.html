@@ -42,6 +42,35 @@
             }
         }
 
+        function getOne() {
+            let xhttp = new XMLHttpRequest();
+
+            xhttp.onreadystatechange = function () {
+                let rs = xhttp.readyState;
+                xhttp.onreadystatechange = function () {
+                    if (xhttp.readyState == 4 && xhttp.status==200) {
+                        document.getElementById("resp").innerHTML = xhttp.response;
+                    }else{
+                        // if we are here status is not 200
+                        // so we need tp parse the error object
+                        // return by the server
+
+                        // parse the JSON error to JS object
+                        let resObj = JSON.parse(xhttp.response);
+                        console.dir(resObj);
+                        // get the message from the error object
+                        let errorMsg = resObj.message;
+                        // put the error message in the document
+                        document.getElementById("resp").innerHTML = resObj.message;
+                    }
+                };
+            }
+
+            let id = document.getElementById("item-id").value;
+            xhttp.open("GET", "http://localhost:8080/api/item/" + id);
+            xhttp.send();
+        }
+
         function getAll() {
             // create a JS object for sending a request and getting a response
             let xhttp = new XMLHttpRequest(); // ready state 0
@@ -69,7 +98,7 @@
             xhttp.open("GET", "http://localhost:8080/api/item"); // ready state 1
             // send the request
             xhttp.send();
-        } 
+        }
 
         function save() {
             let name = document.getElementById("item-name").value;
@@ -80,7 +109,7 @@
             console.log(itemAsJSON);
             let xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
-                if(xhttp.readyState==4){
+                if (xhttp.readyState == 4) {
                     console.log(xhttp.response);
                     document.getElementById("resp").innerHTML = xhttp.response;
                 }
