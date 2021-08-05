@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+<body style="background-color: black; color: blanchedalmond;">
+    <h1>Store of Items</h1>
+    <fieldset>
+        <legend>dashboard</legend>
+        <div>
+            item id <br> <input id="item-id" type="number">
+        </div>
+        <div>
+            item name <br> <input id="item-name" type="text">
+        </div>
+        <div>
+            item price <br> <input id="item-price" type="number">
+        </div>
+        <br>
+        <button type="button" , onclick="save()">Save</button>
+        <button type="button" , onclick="getOne()">Get One</button>
+        <button type="button" , onclick="getAll()">Get All</button>
+        <button type="button" , onclick="update()">Update</button>
+        <button type="button" , onclick="deleteOne()">Delete</button>
+    </fieldset>
+
+    <fieldset>
+        <legend>Response</legend>
+        <div id="resp"></div>
+    </fieldset>
+
+    <script>
+        "use strict";
+        // model class
+        class Item {
+            constructor(id, name, price) {
+                this.id = id;
+                this.name = name;
+                this.price = price;
+            }
+        }
+
+        function getAll() {
+            // create a JS object for sending a request and getting a response
+            let xhttp = new XMLHttpRequest();
+
+            // set the callback function for ready state change
+            xhttp.onreadystatechange = function () {
+                if(xhttp.readyState==4){
+                    console.log(xhttp.response);
+                    document.getElementById("resp").innerHTML = xhttp.response;
+                }
+            }
+
+            // define the request
+            xhttp.open("GET", "http://localhost:8080/api/item");
+            // send the request
+            xhttp.send();
+        } 
+    </script>
+
+</body>
+
+</html>
