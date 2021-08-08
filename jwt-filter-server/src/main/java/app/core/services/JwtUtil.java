@@ -42,7 +42,7 @@ public class JwtUtil {
 				.setIssuedAt(Date.from(now))
 
 //				.setExpiration(Date.from(now.plus(10, ChronoUnit.HOURS))).signWith(this.decodedSecretKey)
-				.setExpiration(Date.from(now.plus(180, ChronoUnit.SECONDS))).signWith(this.decodedSecretKey)
+				.setExpiration(Date.from(now.plus(20, ChronoUnit.SECONDS))).signWith(this.decodedSecretKey)
 
 				.signWith(decodedSecretKey)
 
