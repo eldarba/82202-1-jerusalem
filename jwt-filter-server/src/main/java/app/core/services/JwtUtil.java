@@ -10,6 +10,8 @@ import java.util.Map;
 
 import javax.crypto.spec.SecretKeySpec;
 
+import org.springframework.stereotype.Service;
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.JwtException;
@@ -17,6 +19,7 @@ import io.jsonwebtoken.JwtParser;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
+@Service
 public class JwtUtil {
 	private String signatureAlgorithm = SignatureAlgorithm.HS256.getJcaName();
 	private String encodedSecretKey = "this+is+my+key+and+it+must+be+at+least+256+bits+long";
