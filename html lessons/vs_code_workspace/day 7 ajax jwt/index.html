@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+    html, body{
+        height: 100%;
+    }
+
+    label, input, select, button{
+        width: 100px;
+        display: inline-block;
+        margin: 10px;
+    }
+    </style>
+</head>
+<body>
+    <!-- LOGIN screen -->
+    <div id="login">
+        <h1>Login</h1>
+        <fieldset>
+            <div>
+                <label>user name</label>
+                <input id="in-user-id" type="text" value="moshe">
+            </div>
+            <div>
+                <label>user email</label>
+                <input id="in-user-email" type="text" value="admin@mail">
+            </div>
+            <div>
+                <label>user type</label>
+                <select id="select-user-type">
+                    <option value="ADMIN">Admin</option>
+                    <option value="COMPANY">Company</option>
+                    <option value="CUSTOMER">Customer</option>
+                </select>
+            </div>
+            <div>
+                <button onclick="login()">Login</button>
+            </div>
+        </fieldset>
+    </div>
+    
+    <div id="api" style="display: none;">
+        <h1>API</h1>
+        <fieldset>
+            <legend>dashboard</legend>
+            <div>call grret and other API endpoints</div>
+        </fieldset>
+            <div>
+                <button onclick="logout()">Logout</button>
+            </div>
+    </div>
+    <script>
+        function login() {
+            // after success
+            document.getElementById("login").style.display="none";
+            document.getElementById("api").style.display="block";
+        }
+        function logout() {
+            document.getElementById("login").style.display="block";
+            document.getElementById("api").style.display="none";
+        }
+    </script>
+</body>
+</html>
