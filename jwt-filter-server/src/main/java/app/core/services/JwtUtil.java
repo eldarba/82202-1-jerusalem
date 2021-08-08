@@ -42,7 +42,7 @@ public class JwtUtil {
 				.setIssuedAt(Date.from(now))
 
 //				.setExpiration(Date.from(now.plus(10, ChronoUnit.HOURS))).signWith(this.decodedSecretKey)
-				.setExpiration(Date.from(now.plus(30, ChronoUnit.SECONDS))).signWith(this.decodedSecretKey)
+				.setExpiration(Date.from(now.plus(180, ChronoUnit.SECONDS))).signWith(this.decodedSecretKey)
 
 				.signWith(decodedSecretKey)
 
@@ -56,7 +56,7 @@ public class JwtUtil {
 
 	/** returns the JWT subject - in our case the email address */
 	public String extractUsername(String token) throws JwtException {
-		return extractAllClaims(token).getSubject();
+		return extractAllClaims(token).get("userId").toString();
 	}
 
 	public Date extractExpiration(String token) throws JwtException {

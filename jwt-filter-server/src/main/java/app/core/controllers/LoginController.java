@@ -3,7 +3,9 @@ package app.core.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -17,14 +19,20 @@ import app.core.services.JwtUtil.UserDetails.UserType;
 public class LoginController {
 	
 	@Autowired
-	private JwtUtil jwtUtil;
+	private JwtUtil jwtUtil; 
 	
-	public String login(String userId, String userEmail, UserType userType, String password) {
+	@PutMapping
+	public String login(
+			@RequestParam String userId, 
+			@RequestParam String userEmail, 
+			@RequestParam UserType userType, 
+			@RequestParam String password) {
 		UserDetails userDetails = new UserDetails(userId, userEmail, userType);
 		
 		switch(userType) {
 		case ADMIN:
-			if(!(userId.equals("admin") && userEmail.equals("admin@mail") && password.equals("admin"))) {
+			if(!(userEmail.equals("admin@mail") 
+					&& password.equals("admin"))) {
 				throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "bad credentials");
 			}
 			break;
