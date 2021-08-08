@@ -1,4 +1,4 @@
-package app.core;
+package app.core.services;
 
 import java.security.Key;
 import java.time.Instant;
