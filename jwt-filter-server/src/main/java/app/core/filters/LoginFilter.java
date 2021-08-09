@@ -31,6 +31,12 @@ public class LoginFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		// the response in case we block the request and send error from the filter
 		HttpServletResponse resp = (HttpServletResponse) response;
+		
+		// Access-Control-Max-Age: 86400
+		// set the amount of seconds to keep the 
+		//access control permissions from the server
+		// after that time another preflight request is needed
+		resp.setHeader("Access-Control-Max-Age", "120");
 
 		// get the token
 		String token = req.getHeader("token");
