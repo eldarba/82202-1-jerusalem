@@ -1,7 +1,6 @@
 package app.core.filters;
 
 import java.io.IOException;
-import java.util.Date;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -38,22 +37,17 @@ public class LoginFilter implements Filter {
 
 		if (token != null) {
 			try {
-				Date exp = jwtUtil.extractExpiration(token);
-				if (exp.before(new Date())) {
-					resp.addHeader("Access-Control-Allow-Origin", "http://localhost:5500");
-					resp.sendError(HttpStatus.UNAUTHORIZED.value(), "token expired");
-					return;
-				}
+				// check the token validity
+				jwtUtil.extractAllClaims(token);
+				// pass the request to the next filter - in our case the controller method
+				chain.doFilter(request, response); // pass the request
+				return;
 			} catch (JwtException e) {
 				// in case of a browser user-agent (CORS policy) we need to headers for CORS
 				resp.addHeader("Access-Control-Allow-Origin", "http://localhost:5500");
 				resp.sendError(HttpStatus.UNAUTHORIZED.value(), "invalid token: " + e.getMessage());
 				return;
 			}
-
-			// pass the request to the next filter - in our case the controller method
-			chain.doFilter(request, response); // pass the request
-			return;
 
 		} else {
 			// if we are here we don't have a token

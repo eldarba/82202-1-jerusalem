@@ -1,19 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Document</title>
     <style>
-    html, body{
-        height: 100%;
-    }
+        html,
+        body {
+            height: 100%;
+        }
 
-    label, input, select, button{
-        width: 100px;
-        display: inline-block;
-        margin: 10px;
-    }
+        label,
+        input,
+        select,
+        button {
+            width: 100px;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        div#login,
+        div#api,
+        fieldset {
+            height: 80%;
+        }
     </style>
 </head>
+
 <body>
     <!-- LOGIN screen -->
     <div id="login">
@@ -28,6 +40,10 @@
                 <input id="in-user-email" type="text" value="admin@mail">
             </div>
             <div>
+                <label>user password</label>
+                <input id="in-user-password" type="password" value="admin">
+            </div>
+            <div>
                 <label>user type</label>
                 <select id="select-user-type">
                     <option value="ADMIN">Admin</option>
@@ -40,27 +56,89 @@
             </div>
         </fieldset>
     </div>
-    
+
     <div id="api" style="display: none;">
         <h1>API</h1>
         <fieldset>
             <legend>dashboard</legend>
-            <div>call grret and other API endpoints</div>
-        </fieldset>
+            <div>
+                <button onclick="callGreet()">Call Greet</button>
+            </div>
             <div>
                 <button onclick="logout()">Logout</button>
             </div>
+            <div id="resp"></div>
+        </fieldset>
     </div>
     <script>
-        function login() {
-            // after success
-            document.getElementById("login").style.display="none";
-            document.getElementById("api").style.display="block";
+
+        function callGreet() {
+            let xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = () => {
+                if (xhttp.readyState == 4) {
+                    if (xhttp.status >= 200 && xhttp.status <= 299) {
+                        console.log(xhttp.response);
+                    }else{
+                        alert(xhttp.response);
+                    }
+                }
+            };
+
+            let url = "http://localhost:8080/api/greet";
+            xhttp.open("GET", url);
+            xhttp.setRequestHeader("token", sessionStorage.getItem("token"));
+            xhttp.send();
         }
+
+        function login() {
+            /*
+            AJAX - Asynchronous JavaScript and XML
+            can send and retrieve data from a server asynchronously 
+            (in the background) without interfering with the display 
+            and behaviour of the existing page.
+            */
+            let xhttp = new XMLHttpRequest();
+            // supply a call back function to the onreadystatechange field
+            xhttp.onreadystatechange = () => {
+                if (xhttp.readyState == 4) {
+                    if (xhttp.status >= 200 && xhttp.status <= 299) {
+                        // after success
+                        document.getElementById("login").style.display = "none";
+                        document.getElementById("api").style.display = "block";
+                        let token = xhttp.response;
+                        console.log(token);
+                        // save the token on the client side for further use
+                        // we will use this token when we ajax an API method
+                        sessionStorage.setItem("token", token);
+                    } else {
+                        let e = JSON.parse(xhttp.response);
+                        console.dir(e);
+                        alert("Error: " + e.error + ", " + e.message);
+                    }
+                }
+            };
+            let password = document.getElementById("in-user-password").value;
+            let email = document.getElementById("in-user-email").value;
+            let id = document.getElementById("in-user-id").value;
+            let type = document.getElementById("select-user-type").value;
+
+            let url = "http://localhost:8080/login";
+            url += "?password=" + password;
+            url += "&userEmail=" + email;
+            url += "&userId=" + id;
+            url += "&userType=" + type;
+
+            xhttp.open("PUT", url);
+            xhttp.send();
+        }
+
         function logout() {
-            document.getElementById("login").style.display="block";
-            document.getElementById("api").style.display="none";
+            document.getElementById("login").style.display = "block";
+            document.getElementById("api").style.display = "none";
+            // when we log out we want to remove the token from the client side
+            sessionStorage.removeItem("token");
         }
     </script>
 </body>
+
 </html>

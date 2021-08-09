@@ -49,7 +49,7 @@ public class JwtUtil {
 				.compact();
 	}
 
-	private Claims extractAllClaims(String token) throws JwtException {
+	public Claims extractAllClaims(String token) throws JwtException {
 		JwtParser jwtParser = Jwts.parserBuilder().setSigningKey(this.decodedSecretKey).build();
 		return jwtParser.parseClaimsJws(token).getBody();
 	}
