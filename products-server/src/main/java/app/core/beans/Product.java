@@ -73,10 +73,14 @@ public class Product {
 		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", stock=" + stock + "]";
 	}
 
+
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
 	}
+
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -89,5 +93,14 @@ public class Product {
 		Product other = (Product) obj;
 		return id == other.id;
 	}
+
+
+
+	
+
+
+	
+
+	
 
 }

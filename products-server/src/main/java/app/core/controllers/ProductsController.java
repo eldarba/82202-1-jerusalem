@@ -29,9 +29,16 @@ public class ProductsController {
 	@PostMapping
 	public int add(@RequestBody Product product) {
 		product.setId(currentId++);
-		this.products.add(product);
+		for (Product p : products) {
+			if(product.getName().equals(p.getName())) {
+				throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "duplicate product name");
+			}
+		}
 		
+		this.products.add(product);
 		return product.getId();
+		
+		
 	}
 
 	@GetMapping("/{productId}")
@@ -49,6 +56,11 @@ public class ProductsController {
 
 	@GetMapping
 	public List<Product> getAll() {
+		try {
+			Thread.sleep(200);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		return this.products;
 	}
 
