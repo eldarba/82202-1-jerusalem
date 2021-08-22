@@ -24,7 +24,9 @@ import app.core.beans.Product;
 public class ProductsController {
 
 	private List<Product> products = new ArrayList<>();
-	private int currentId = 101;
+	private int currentId = 1;
+	
+	
 
 	@PostMapping
 	public int add(@RequestBody Product product) {
